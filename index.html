@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visualizing Campaign Donations</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,400italic,300italic' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Century+Gothic:wght@400;700&display=swap" rel="stylesheet" type='text/css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!-- Surpress the favicon error -->
+    <link rel="icon" href="data:,">
+
+    <!-- Load CSS libraries -->
+    <link rel="stylesheet" href="css/style.css?v=1.0">
+    <link rel="stylesheet" href="css/leaflet.css">
+
+    <!-- <link rel="stylesheet" href="build/static/css/main.1982bec1.css"> -->
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<!--	INTRODUCTION/LANDING PAGE	-->
+<div id="intro">
+    <div class="plain-text" data-aos="fade-up" data-aos-duration="2000">
+        <h1>Visualizing Campaign Donations</h1>
+    </div>
+</div>
+
+<p class="plain-text plain-text-box" data-aos="fade-up" data-aos-duration="2000">
+    The following visualizatons were made using data from the 
+    Federal Election Commission (FEC), which is made publicly availalble by law.
+    For the following visualizations, we filtered the data to include only those 
+    individuals who self-reported "Harvard," "Harvard University," etc.
+</p>
+<br></br>
+
+<!--	VISUALIATIONS	-->
+<div data-aos="fade-up" data-aos-duration="2000" class="vis-wrapper">
+    <h2>Top Donors</h1>
+    <div id="top-donors"></div>
+</div>
+<br></br>
+
+<div data-aos="fade-up" data-aos-duration="2000" class="vis-wrapper">
+    <h2>Top Recipients</h1>
+    <div id="top-recipients"></div>
+</div>
+<br></br>
+
+<div data-aos="fade-up" data-aos-duration="2000" class="vis-wrapper">
+    <h2>Histogram of Donations</h2>
+    <div id="histogram"></div>
+</div>
+<br></br>
+
+<div data-aos="fade-up" data-aos-duration="2000" class="vis-wrapper">
+    <h2>Harvard Professors' Donations</h2>
+    <div class="container-fluid row m-3">
+        <div class="col-md-6">
+            <div class="map-border" data-aos="fade-right" data-aos-duration="2000">
+                <div id="map" data-aos="fade-right" data-aos-duration="2000"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="place"></div>
+            <p id="professor-description">Try to find all 11 Harvard Computer Science professors!
+                <br><br>
+                (Hint: zoom out!)</p>
+        </div>
+    </div>
+</div>
+<br></br>
+
+<p class="plain-text plain-text-box" data-aos="fade-up" data-aos-duration="2000">
+    The following visualizatons were made using data from Open Secrets, an organization 
+    dedicated to tracking spending in elections. As such, this data is on a national 
+    scale and is no longer Harvard-specific. 
+</p>
+<br></br>
+
+<div data-aos="fade-up" data-aos-duration="2000" class="vis-wrapper">
+    <h2>Total Contributions by Campaign Committees & Outside Groups</h2>
+    <div id="total-contributions"></div>
+</div>
+<br></br>
+
+<!-- <div data-aos="fade-up" data-aos-duration="2000" class="vis-wrapper">
+    <h2>Donations Over Time</h1>
+    <div id="contributions-over-time"></div>
+</div> -->
+
+<div class="plain-text">
+    <p>
+        This is a project for CS 105-Zero by Christopher Doyle and Katherine McPhie. 
+    </p>
+</div>
+
+<!-- embedding JS libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+<!-- d3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+
+<!-- leaflet -->
+<script src="js/map-vis/leaflet.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>
+
+<!-- different visualizations go here (each should have their own .js file) -->
+<script src="js/map-vis/map.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/top_recipients.js"></script>
+<script src="js/histogram.js"></script>
+<script src="js/total_contributions.js"></script>
+<script src="js/top_donors.js" defer></script>
+<script src="js/contributions_over_time.js" defer></script>
+
+<!-- AOS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+
+</body>
+</html>
