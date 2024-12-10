@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campaign Donations</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <title>CS 1050 Final Project</title>
 </head>
 <body>
-    <h1>Campaign Donations Visualization</h1>
-    <div id="chart"></div>
-    <script src="script.js"></script>
+    <h1>Welcome</h1>
+    <img src="/static/yearly-contributions.png" alt="Yearly Contributions Graph">
 </body>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<div id="plot"></div>
+<script>
+    fetch('/api/data')
+        .then(response => response.json())
+        .then(data => {
+            const trace = {
+                x: data.map(d => d.year),
+                y: data.map(d => d.contributions),
+                type: 'bar'
+            };
+            Plotly.newPlot('plot', [trace]);
+        });
+</script>
+
 </html>

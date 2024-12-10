@@ -1,18 +1,23 @@
 from flask import Flask, jsonify, send_from_directory
 import pandas as pd
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
-# API endpoint to serve data
+@app.route('/')
+def serve_index():
+    return send_from_directory('static', 'index.html')
+
 @app.route('/api/data')
 def get_data():
-    df = pd.read_csv('data/campaign_donations.csv')
-    return jsonify(df.to_dict(orient='records'))
+    import pandas as pd
+    data = pd.read_csv('cleaned_fec_data.csv', header=0)
+    data = data.fillna("")
+    print(data.to_dict(orient='records'))
+    return jsonify(data.to_dict(orient='records'))
 
-# Serve the HTML page
-@app.route('/')
-def serve_page():
-    return send_from_directory('static', 'index.html')
+@app.route('/static/yearly_contributions')
+def serve_yearly_contributions():
+    return send_from_directory('static', 'yearly-contributions.png')
 
 if __name__ == '__main__':
     app.run(debug=True)
