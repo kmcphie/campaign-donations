@@ -1,0 +1,234 @@
+/* General CSS */
+
+body, html {
+    font-family: 'Century Gothic', sans-serif;
+    background-color: #1e1d1d;
+    font-size: 20px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+    color: white;
+}
+
+.vis-wrapper {
+    margin-left: 100px;
+}
+
+.card-img-top {
+    height: 700px;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-weight: bolder;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    font-size: 60px;
+    color: #249421;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 40px;
+    margin: 0 0 20px 50px;
+    color: #249421;
+}
+
+.container-fluid {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.flex-col {
+    display: flex;
+    justify-content: center;
+}
+
+.left {
+    align-items: flex-start;
+    padding-right: 10%;
+}
+
+.right {
+    align-items: flex-end;
+    padding-left: 10%;
+}
+
+.text-box {
+    font-size: 26px;
+    box-sizing: border-box;
+    width: 50%;
+    background: #249421;
+    margin: 12vh 10vh;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.larger-text {
+    font-size: 38px;
+    color: white;
+}
+
+.plain-text {
+    font-size: 21px;
+    padding: 25px 100px 25px 50px;
+    color: white;
+}
+
+.plain-text-box {
+    box-sizing: border-box;
+    width: 80%;
+    background: #249421;
+    margin: 10px 50px;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.doodle-albums {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+
+/* Introduction/Landing Page */
+
+#landing-bg {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#landing-bg img {
+    width: 100vw;
+    height: auto;
+}
+
+.disclaimer {
+    position: relative;
+    font-size: 16px;
+    color: #9d9d9d;
+    z-index: 1;
+    padding: 20px;
+    margin: 15px 50px;
+}
+
+#scroll-img {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10vh;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.intro {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+.footer {
+    position: relative;
+    margin-left: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.intro-img {
+    width: 35%;
+    height: 35%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 20px;
+    display: block;
+    border-radius: 25%;
+}
+
+
+/* Visualization Specific CSS */
+
+.tooltip {
+    position: absolute;
+    visibility: visible;
+    background-color: white;
+    color: #1e1d1d;
+    font-family: 'Century Gothic', 'sans-serif';
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#map-vis {
+    height: 1000px;
+    width:100%;
+}
+
+#map {
+    height: 1000px; 
+    width: 100%;
+}
+
+.map-bg {
+    background-color: #249421;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.map-border {
+    background-color: #249421;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+#places {
+    height: 290vh;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.description {
+    padding: 50px;
+}
+
+#place {
+    height: 300px;
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marker-with-border {
+    border: 2px solid #1d1d1d;
+}
+
+.leaflet-popup-content {
+    font-family: 'Century Gothic', 'sans-serif';
+}
+
+.place-1 {
+    border-radius: 50%;
+}
