@@ -27,17 +27,43 @@
 </head>
 <body>
 
-<!--	INTRODUCTION/LANDING PAGE	-->
+<!-- d3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script src="https://d3js.org/d3-geo.v1.min.js"></script>
+
+<!--	INTRODUCTION/TITLE	-->
 <div id="intro">
     <div class="plain-text" data-aos="fade-up" data-aos-duration="2000">
-        <h1>Visualizing Campaign Donations</h1>
+        <h1 id="main-heading">Visualizing Campaign Donations</h1>
     </div>
 </div>
+<script>
+    // Alternating colors by word
+    const headingText = "Visualizing Campaign Donations";
+    const colors = ["#eb4034", "white", "#3449eb"];
+
+    // Select the heading element
+    const headingElement = d3.select("#main-heading");
+
+    // Clear existing content and apply span for each word
+    headingElement.html(""); // Clear the original text
+    headingElement.selectAll("span")
+        .data(headingText.split(" ")) // Split the text into an array of words
+        .enter()
+        .append("span")
+        .text(d => d) // Add each word
+        .style("color", (d, i) => colors[i % colors.length]) // Alternate colors
+        .style("margin-right", "10px") // Add spacing between words
+        .style("display", "inline-block"); // Ensure proper layout
+</script>
 
 <p class="plain-text plain-text-box" data-aos="fade-up" data-aos-duration="2000">
     The following visualizatons were made using data from the 
     Federal Election Commission (FEC), which is made publicly availalble by law.
-    For the following visualizations, we filtered the data to include only those 
+    For these visualizations, we filtered the data to include only those 
     individuals who self-reported "Harvard," "Harvard University," etc.
 </p>
 <br></br>
@@ -107,13 +133,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
-
-<!-- d3 -->
-<script src="https://d3js.org/d3.v7.min.js"></script>
-
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="https://d3js.org/topojson.v2.min.js"></script>
-<script src="https://d3js.org/d3-geo.v1.min.js"></script>
 
 <!-- leaflet -->
 <script src="js/map-vis/leaflet.js"></script>

@@ -33,14 +33,14 @@ h1 {
     margin-left: 50px;
     margin-bottom: 30px;
     font-size: 60px;
-    color: #249421;
+    color: #3449eb;
 }
 
 h2 {
     font-weight: bold;
     font-size: 40px;
     margin: 0 0 20px 50px;
-    color: #249421;
+    color: white;
 }
 
 .container-fluid {
@@ -67,7 +67,7 @@ h2 {
     font-size: 26px;
     box-sizing: border-box;
     width: 50%;
-    background: #249421;
+    background: #eb4034;
     margin: 12vh 10vh;
     padding: 30px;
     border-radius: 20px;
@@ -87,7 +87,7 @@ h2 {
 .plain-text-box {
     box-sizing: border-box;
     width: 80%;
-    background: #249421;
+    background: #eb4034;
     margin: 10px 50px;
     padding: 30px;
     border-radius: 20px;
@@ -190,13 +190,13 @@ h2 {
 }
 
 .map-bg {
-    background-color: #249421;
+    background-color: #3449eb;
     padding: 10px;
     border-radius: 20px;
 }
 
 .map-border {
-    background-color: #249421;
+    background-color: #3449eb;
     border-radius: 25px;
     padding: 15px;
 }

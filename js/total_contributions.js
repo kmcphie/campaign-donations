@@ -82,7 +82,7 @@ class TotalContributions {
             .padding(0.1);
     
         // Colors
-        const customColors = ["#249421", "#1a6117", "#103d0e", "#3dd435"];
+        const customColors = ["white", "#eb4034", "#3449eb", "#249421"];
         vis.color = d3.scaleOrdinal()
             .domain(vis.types) // Map each type to a custom color
             .range(customColors);
@@ -133,5 +133,43 @@ class TotalContributions {
         vis.tooltip = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
+
+        // Add legend
+        const legendData = [
+            { label: "Campaign", color: "white" },
+            { label: "Super PAC", color: "#eb4034" },
+            { label: "Carey (Hybrid PAC)", color: "#3449eb" },
+            { label: "Leadership PAC", color: "#249421" }
+        ];
+
+        // Append a legend group
+        const legend = vis.svg.append("g")
+            .attr("class", "legend")
+            .attr("transform", `translate(${vis.width - 150}, 0)`); // Position top-right
+
+        // Add legend rectangles
+        legend.selectAll(".legend-rect")
+            .data(legendData)
+            .enter()
+            .append("rect")
+            .attr("class", "legend-rect")
+            .attr("x", 0)
+            .attr("y", (d, i) => i * 20 + 140)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", d => d.color)
+            .attr("stroke", "black");
+
+        // Add legend labels
+        legend.selectAll(".legend-label")
+            .data(legendData)
+            .enter()
+            .append("text")
+            .attr("class", "legend-label")
+            .attr("x", 20)
+            .attr("y", (d, i) => i * 20 + 152)
+            .text(d => d.label)
+            .attr("font-size", "12px")
+            .attr("fill", "white");
     }
 }

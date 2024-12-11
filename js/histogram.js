@@ -99,7 +99,7 @@ class Histogram {
             .attr("y", d => vis.y(d.length))
             .attr("width", d => d.x1 === 500 ? vis.x(25) - vis.x(0) - 1 : vis.x(d.x1) - vis.x(d.x0) - 1) // Adjust "500+" bin width
             .attr("height", d => vis.height - vis.y(d.length))
-            .attr("fill", "#249421")
+            .attr("fill", "white")
             .on("mouseover", function(event, d) {
                 vis.tooltip
                     .style("opacity", 0.9)

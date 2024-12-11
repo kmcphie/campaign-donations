@@ -12,6 +12,19 @@ class TopRecipients {
     initVis() {
         const vis = this;
 
+        // Create an array of party affiliation for color coding bars
+        vis.party_affiliations = [];
+        vis.party_affiliations.push({ name: "ActBlue", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "Obama for America", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "DNC Services Corp", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "DNC Services Corp / Democratic National Committee", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "Obama Victory Fund 2012", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "Hillary for America", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "Biden for President", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "Democratic Congressional Campaign Committee", color: "#3449eb" });
+        vis.party_affiliations.push({ name: "NRSC", color: "#eb4034" });
+        vis.party_affiliations.push({ name: "Harris for President", color: "#3449eb" });
+
         // Aggregate data by recipient name
         vis.donorData = Array.from(
             d3.rollup(
@@ -66,6 +79,48 @@ class TopRecipients {
             .attr("y", d => vis.y(d.name))
             .attr("width", d => vis.x(d.total))
             .attr("height", vis.y.bandwidth())
-            .attr("fill", "#249421");
+            .attr("fill", d => {
+                // Find the organization in the party_affiliations array
+                const affiliation = vis.party_affiliations.find(aff => aff.name === d.name);
+                // Return the corresponding color or default to green
+                return affiliation ? affiliation.color : "#249421";
+            });
+
+        // Add legend
+        const legendData = [
+            { label: "Democrat", color: "#3449eb" },
+            { label: "Republican", color: "#eb4034" },
+            { label: "Bipartisan", color: "white" }
+        ];
+
+        // Append a legend group
+        const legend = vis.svg.append("g")
+            .attr("class", "legend")
+            .attr("transform", `translate(${vis.width - 150}, 0)`); // Position top-right
+
+        // Add legend rectangles
+        legend.selectAll(".legend-rect")
+            .data(legendData)
+            .enter()
+            .append("rect")
+            .attr("class", "legend-rect")
+            .attr("x", 0)
+            .attr("y", (d, i) => i * 20 + 60)
+            .attr("width", 15)
+            .attr("height", 15)
+            .attr("fill", d => d.color)
+            .attr("stroke", "black");
+
+        // Add legend labels
+        legend.selectAll(".legend-label")
+            .data(legendData)
+            .enter()
+            .append("text")
+            .attr("class", "legend-label")
+            .attr("x", 20)
+            .attr("y", (d, i) => i * 20 + 72)
+            .text(d => d.label)
+            .attr("font-size", "12px")
+            .attr("fill", "white");
     }
 }
